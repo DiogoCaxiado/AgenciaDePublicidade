@@ -109,9 +109,6 @@ namespace AgenciaDePublicidade
             connection.Open();
             SqlDataReader reader = cmd.ExecuteReader(); //executando o comando de busca no SQL e armazenando o resultado da busca em um leitor (matriz)
 
-            string format;
-            format = txtValor.Text.Replace(",", ".");
-
             if (reader.HasRows) //se o leitor tem linhas de dados
             {
                 reader.Read(); //ler a próxima linha de dados
@@ -127,7 +124,7 @@ namespace AgenciaDePublicidade
                 txtNome.Text = reader.GetString(1);
                 txtDescricao.Text = reader.GetString(2);
                 txtDuracao.Text = reader.GetInt32(3).ToString();
-                txtValor.Text = reader.GetDecimal(4).ToString(format);
+                txtValor.Text = reader.GetDecimal(4).ToString(".");
             }
             else
             {
